@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1.0'>
+    <title>Boilermaker</title>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- CodeMirror -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css"/>
+
+    <!-- Firepad -->
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+    <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+<!--    <script>
+      // Initialize Firebase
+      var config = {
+
+        authDomain: "slydv-ea8fc.firebaseapp.com",
+
+        projectId: "slydv-ea8fc",
+        storageBucket: "slydv-ea8fc.appspot.com",
+        messagingSenderId: "398812447009"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script defer src="/bundle.js"></script> -->
+  </head>
+  <body onload="init()">
+    <div id="firepad-container"></div>
+    <script>
+      function init() {
+        // Initialize the Firebase SDK.
+        firebase.initializeApp({
+          apiKey: "AIzaSyAKLhCk67D4Q04IYNTVf76Bkx8McIng0vE",
+          databaseURL: "https://slydv-ea8fc.firebaseio.com",
+        });
+
+        // Get Firebase Database reference.
+        var firepadRef = firebase.database().ref();
+
+        // Create CodeMirror (with lineWrapping on).
+        var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
+        lineNumbers: true,
+        mode: 'javascript'
+      });
+
+        // Create Firepad (with rich text toolbar and shortcuts enabled).
+        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
+            {defaultText: 'Hello, World!' });
+      }
+    </script>
+  </body>
+</html>
+
+
+
+
+
